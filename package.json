@@ -38,8 +38,16 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\""
   },
+  "dependencies": {
+    "figma-squircle": "^1.1.0"
+  },
   "keywords": [
     "react-native",
+    "squircle",
+    "figma",
+    "gradient",
+    "svg",
+    "smooth-corners",
     "ios",
     "android"
   ],
@@ -72,12 +80,14 @@
     "react": "19.2.0",
     "react-native": "0.83.6",
     "react-native-builder-bob": "^0.41.0",
+    "react-native-svg": "^15.8.0",
     "turbo": "^2.8.21",
     "typescript": "^6.0.2"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "*"
   },
   "workspaces": [
     "example"
