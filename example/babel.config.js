@@ -10,6 +10,8 @@ module.exports = function (api) {
   return getConfig(
     {
       presets: ['babel-preset-expo'],
+      // react-native-reanimated plugin MUST be listed last
+      plugins: ['react-native-reanimated/plugin'],
     },
     { root, pkg }
   );

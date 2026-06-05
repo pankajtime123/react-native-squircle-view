@@ -22,7 +22,7 @@ export interface LinearGradientParams {
   x2?: string | number
   /** Gradient end y (default '0%'). */
   y2?: string | number
-  stops: GradientStop[]
+  stops: readonly GradientStop[]
 }
 
 /** Configuration for a radial gradient fill. */
@@ -38,7 +38,7 @@ export interface RadialGradientParams {
   fx?: string | number
   /** Focal point y (defaults to cy). */
   fy?: string | number
-  stops: GradientStop[]
+  stops: readonly GradientStop[]
 }
 
 /** Union of all supported gradient types. */
@@ -79,3 +79,10 @@ export interface ViewSize {
 export interface RectProps extends Omit<ViewProps, 'children'> {
   children: (rect: ViewSize) => ReactNode
 }
+
+// ─── Animated types (re-exported for convenience) ─────────────────────────────
+export type {
+  MaybeAnimated,
+  AnimatedSquircleParams,
+  AnimatedSquircleViewProps,
+} from './animated'

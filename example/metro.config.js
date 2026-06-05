@@ -15,4 +15,12 @@ const config = withMetroConfig(getDefaultConfig(__dirname), {
   dirname: __dirname,
 });
 
+// Fix: when Metro resolves imports from the library source files (src/),
+// it must also look inside example/node_modules for peer deps like
+// react-native-reanimated that are not installed at the workspace root.
+config.resolver.nodeModulesPaths = [
+  ...(config.resolver.nodeModulesPaths ?? []),
+  path.resolve(__dirname, 'node_modules'),
+];
+
 module.exports = config;

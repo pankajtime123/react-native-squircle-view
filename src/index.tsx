@@ -7,18 +7,33 @@
  * are NOT re-exported so they can be refactored freely without semver bumps.
  */
 
-// ── Components ────────────────────────────────────────────────────────────────
+// ── Static components ─────────────────────────────────────────────────────────
 export { SquircleView } from './components/SquircleView'
 
-// ── Types (consumers may need these for typing their own wrappers) ────────────
+// ── Animated components (requires react-native-reanimated peer dep) ───────────
+export { AnimatedSquircleView } from './components/AnimatedSquircleView'
+
+// ── Types ─────────────────────────────────────────────────────────────────────
 export type {
+  // Base types
   SquircleParams,
   SquircleViewProps,
   GradientParams,
   LinearGradientParams,
   RadialGradientParams,
   GradientStop,
+  // Animated types
+  MaybeAnimated,
+  AnimatedSquircleParams,
+  AnimatedSquircleViewProps,
 } from './types'
 
 // ── Utilities (escape hatch for advanced custom SVG use-cases) ────────────────
 export { getSvgPath } from 'figma-squircle'
+
+/**
+ * getSvgPathWorklet — worklet-compatible path generator.
+ * Use this if you need to compute the squircle path inside your own
+ * `useAnimatedProps` worklet.
+ */
+export { getSvgPathWorklet } from './utils/squirclePathWorklet'

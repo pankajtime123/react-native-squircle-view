@@ -42,6 +42,18 @@ export function SquircleBackground({
 
   const hasStroke = strokeWidth > 0
 
+  // ── Clamp inputs to valid ranges ──────────────────────────────────────────
+  // Spring animations can overshoot: cornerSmoothing > 1 makes arcSectionLength
+  // negative inside figma-squircle, producing `--x` (double negative) in the
+  // SVG path which react-native-svg rejects. Clamping here is safe and covers
+  // both animated and static usage.
+  const safeSmoothing = Math.min(1, Math.max(0, cornerSmoothing))
+  const safeRadius    = Math.max(0, cornerRadius)
+  const safeTL = topLeftCornerRadius     != null ? Math.max(0, topLeftCornerRadius)     : undefined
+  const safeTR = topRightCornerRadius    != null ? Math.max(0, topRightCornerRadius)    : undefined
+  const safeBR = bottomRightCornerRadius != null ? Math.max(0, bottomRightCornerRadius) : undefined
+  const safeBL = bottomLeftCornerRadius  != null ? Math.max(0, bottomLeftCornerRadius)  : undefined
+
   return (
     <Rect style={StyleSheet.absoluteFill}>
       {({ width, height }) => {
@@ -50,12 +62,12 @@ export function SquircleBackground({
           const squirclePath = getSvgPath({
             width,
             height,
-            cornerSmoothing,
-            cornerRadius,
-            topLeftCornerRadius,
-            topRightCornerRadius,
-            bottomRightCornerRadius,
-            bottomLeftCornerRadius,
+            cornerSmoothing: safeSmoothing,
+            cornerRadius:    safeRadius,
+            topLeftCornerRadius:     safeTL,
+            topRightCornerRadius:    safeTR,
+            bottomRightCornerRadius: safeBR,
+            bottomLeftCornerRadius:  safeBL,
           })
 
           return (
@@ -70,26 +82,23 @@ export function SquircleBackground({
         // Clamp the stroke so it never exceeds the smallest corner radius.
         const clampedStroke = clampStrokeWidth(
           strokeWidth,
-          cornerRadius,
-          topLeftCornerRadius,
-          topRightCornerRadius,
-          bottomLeftCornerRadius,
-          bottomRightCornerRadius
+          safeRadius,
+          safeTL,
+          safeTR,
+          safeBL,
+          safeBR
         )
         const inset = clampedStroke / 2
 
         const insetPath = getSvgPath({
           width: width - clampedStroke,
           height: height - clampedStroke,
-          cornerSmoothing,
-          cornerRadius: getInnerRadius(cornerRadius, inset),
-          topLeftCornerRadius: getInnerRadius(topLeftCornerRadius, inset),
-          topRightCornerRadius: getInnerRadius(topRightCornerRadius, inset),
-          bottomRightCornerRadius: getInnerRadius(
-            bottomRightCornerRadius,
-            inset
-          ),
-          bottomLeftCornerRadius: getInnerRadius(bottomLeftCornerRadius, inset),
+          cornerSmoothing: safeSmoothing,
+          cornerRadius: getInnerRadius(safeRadius, inset),
+          topLeftCornerRadius:     getInnerRadius(safeTL, inset),
+          topRightCornerRadius:    getInnerRadius(safeTR, inset),
+          bottomRightCornerRadius: getInnerRadius(safeBR, inset),
+          bottomLeftCornerRadius:  getInnerRadius(safeBL, inset),
         })
 
         return (
