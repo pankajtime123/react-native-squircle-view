@@ -1,5 +1,5 @@
 {
-  "name": "@pankajtime123/react-native-squircle-view",
+  "name": "@pankajtime12/react-native-squircle-view",
   "version": "0.1.0",
   "description": "Figma-flavored squircles for React Native with gradient support — no native modules",
   "main": "./lib/module/index.js",
@@ -55,7 +55,7 @@
     "type": "git",
     "url": "git+https://github.com/pankajtime123/react-native-squircle-view.git"
   },
-  "author": "pankajtime123 (https://github.com/pankajtime123)",
+  "author": "pankajtime12 (https://github.com/pankajtime123)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pankajtime123/react-native-squircle-view/issues"
