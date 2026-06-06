@@ -9,6 +9,8 @@ import {
   withRepeat,
   withSequence,
   useAnimatedStyle,
+  useDerivedValue,
+  interpolateColor,
   Easing,
 } from 'react-native-reanimated'
 import { SquircleView, AnimatedSquircleView } from 'react-native-squircle-view'
@@ -200,6 +202,9 @@ export default function App() {
           <SectionLabel>🎬 Animated — stroke width breathe</SectionLabel>
           <StrokeBreathDemo />
 
+          <SectionLabel>🎬 Animated — color interpolation</SectionLabel>
+          <ColorCycleDemo />
+
           {/* ── Layout Animation demos ─────────────────────────────────── */}
           <SectionLabel>🏗 Layout — entering / exiting (FadeInDown + ZoomOut)</SectionLabel>
           <EnterExitDemo />
@@ -340,6 +345,54 @@ function StrokeBreathDemo() {
       style={styles.animatedCard}
     >
       <Text style={styles.cardLabel}>Stroke breathes in/out</Text>
+    </AnimatedSquircleView>
+  )
+}
+
+// ─── Animated demo 4: color interpolation ───────────────────────────────────────
+
+function ColorCycleDemo() {
+  // 0 → 1 ping-pong progress driver
+  const progress = useSharedValue(0)
+
+  React.useEffect(() => {
+    progress.value = withRepeat(
+      withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.quad) }),
+      -1,   // infinite
+      true, // reverse (ping-pong)
+    )
+  }, [progress])
+
+  // Derive animated fill color — runs entirely on the UI thread
+  const fillColor = useDerivedValue(() =>
+    interpolateColor(
+      progress.value,
+      [0, 0.33, 0.66, 1],
+      ['#6366f1', '#ec4899', '#f59e0b', '#10b981'], // purple → pink → amber → green
+    )
+  )
+
+  // Derive animated stroke color in sync
+  const strokeColor = useDerivedValue(() =>
+    interpolateColor(
+      progress.value,
+      [0, 0.33, 0.66, 1],
+      ['#818cf8', '#f9a8d4', '#fde68a', '#6ee7b7'],
+    )
+  )
+
+  return (
+    <AnimatedSquircleView
+      animatedSquircleParams={{
+        cornerRadius: 32,
+        cornerSmoothing: 1,
+        fillColor,    // SharedValue<string>
+        strokeColor,  // SharedValue<string>
+        strokeWidth: 4,
+      }}
+      style={styles.animatedCard}
+    >
+      <Text style={styles.cardLabel}>Color cycles purple → pink → amber → green</Text>
     </AnimatedSquircleView>
   )
 }

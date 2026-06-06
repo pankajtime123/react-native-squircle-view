@@ -331,6 +331,84 @@ function StrokeBreath() {
 
 ---
 
+### Color Interpolation with `interpolateColor`
+
+`fillColor` and `strokeColor` accept a `SharedValue<string>`, so you can smoothly cycle between any colors using Reanimated's `interpolateColor` + `useDerivedValue` — all on the UI thread:
+
+```tsx
+import {
+  AnimatedSquircleView,
+} from 'react-native-squircle-view';
+import {
+  useSharedValue,
+  useDerivedValue,
+  withRepeat,
+  withTiming,
+  interpolateColor,
+  Easing,
+} from 'react-native-reanimated';
+import { useEffect } from 'react';
+
+function ColorCycleDemo() {
+  // A 0 → 1 progress driver that loops forever
+  const progress = useSharedValue(0);
+
+  useEffect(() => {
+    progress.value = withRepeat(
+      withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.quad) }),
+      -1,   // infinite
+      true, // reverse (ping-pong: 0 → 1 → 0 → 1 …)
+    );
+  }, []);
+
+  // Derive an animated color string from the progress value
+  const fillColor = useDerivedValue(() =>
+    interpolateColor(
+      progress.value,
+      [0, 1],
+      ['#6366f1', '#ec4899'], // purple → pink
+    )
+  );
+
+  const strokeColor = useDerivedValue(() =>
+    interpolateColor(
+      progress.value,
+      [0, 1],
+      ['#818cf8', '#f9a8d4'], // light purple → light pink
+    )
+  );
+
+  return (
+    <AnimatedSquircleView
+      animatedSquircleParams={{
+        cornerRadius: 32,
+        cornerSmoothing: 1,
+        fillColor,    // ← SharedValue<string>, updates every frame on UI thread
+        strokeColor,  // ← SharedValue<string>
+        strokeWidth: 3,
+      }}
+      style={{ width: '100%', aspectRatio: 2 }}
+    />
+  );
+}
+```
+
+**Cycling through multiple colors** — pass more input/output stops to `interpolateColor`:
+
+```tsx
+const fillColor = useDerivedValue(() =>
+  interpolateColor(
+    progress.value,
+    [0, 0.33, 0.66, 1],
+    ['#6366f1', '#ec4899', '#f59e0b', '#10b981'], // purple → pink → amber → green
+  )
+);
+```
+
+> **Note:** `gradient` stops are intentionally non-animatable (react-native-svg limitation). Use `fillColor` + `interpolateColor` for smooth color animation, or swap between named gradient presets using React state.
+
+---
+
 ### Layout Animations
 
 `<AnimatedSquircleView>` accepts `entering`, `exiting`, and `layout` props from Reanimated — exactly like `<Animated.View>`:
