@@ -13,7 +13,7 @@ import {
   interpolateColor,
   Easing,
 } from 'react-native-reanimated'
-import { SquircleView, AnimatedSquircleView } from 'react-native-squircle-view'
+
 
 import Animated, {
   FadeInDown,
@@ -26,6 +26,10 @@ import Animated, {
   LinearTransition,
   Keyframe,
 } from 'react-native-reanimated'
+import { AnimatedSquircleView, SquircleView } from 'react-native-squircle-view'
+
+
+
 
 /**
  * Shared layout transition used on EVERY Animated.View wrapper throughout

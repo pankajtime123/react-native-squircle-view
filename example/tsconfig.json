@@ -1,6 +1,10 @@
 {
   "extends": "../tsconfig",
   "compilerOptions": {
-    // Avoid expo-cli auto-generating a tsconfig
-  }
+    "paths": {
+      "react-native-squircle-view": ["../src/index"]
+    }
+  },
+  "include": ["./src/**/*", "./index.js", "../src/**/*"],
+  "exclude": ["../lib"]
 }
