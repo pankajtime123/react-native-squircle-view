@@ -2,7 +2,7 @@
   "extends": "../tsconfig",
   "compilerOptions": {
     "paths": {
-      "@pankajyadav/react-native-squircle-view": ["../src/index"]
+      "@pankajtime12/react-native-squircle-view": ["../src/index"]
     }
   },
   "include": ["./src/**/*", "./index.js", "../src/**/*"],

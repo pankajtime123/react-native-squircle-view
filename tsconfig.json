@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@pankajyadav/react-native-squircle-view": ["./src/index"]
+      "@pankajtime12/react-native-squircle-view": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

@@ -26,7 +26,7 @@ import Animated, {
   LinearTransition,
   Keyframe,
 } from 'react-native-reanimated'
-import { AnimatedSquircleView, SquircleView } from '@pankajyadav/react-native-squircle-view'
+import { AnimatedSquircleView, SquircleView } from '@pankajtime12/react-native-squircle-view'
 
 
 
