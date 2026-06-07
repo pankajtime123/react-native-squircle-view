@@ -1,19 +1,19 @@
-<h1 align="center">react-native-squircle-view</h1>
+<h1 align="center">@pankajyadav/react-native-squircle-view</h1>
 
 <p align="center">
   Figma-flavored squircles for React Native — with gradient fills, stroke, per-corner radii, and smooth Reanimated animations. No native modules required.
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/react-native-squircle-view"><img src="https://img.shields.io/npm/v/react-native-squircle-view.svg" alt="npm version" /></a>
-  <a href="https://www.npmjs.com/package/react-native-squircle-view"><img src="https://img.shields.io/npm/dm/react-native-squircle-view.svg" alt="npm downloads" /></a>
-  <a href="https://github.com/pankajtime123/react-native-squircle-view/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license" /></a>
+  <a href="https://www.npmjs.com/package/@pankajyadav/react-native-squircle-view"><img src="https://img.shields.io/npm/v/@pankajyadav/react-native-squircle-view.svg" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/@pankajyadav/react-native-squircle-view"><img src="https://img.shields.io/npm/dm/@pankajyadav/react-native-squircle-view.svg" alt="npm downloads" /></a>
+  <a href="https://github.com/pankajtime123/@pankajyadav/react-native-squircle-view/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./squircle-demo.gif" alt="react-native-squircle-view demo" width="320" />
+  <img src="./squircle-demo.gif" alt="@pankajyadav/react-native-squircle-view demo" width="320" />
 </p>
 
 ---
@@ -44,9 +44,9 @@ A **squircle** is the smooth-corner shape used throughout Apple's iOS icons, Fig
 ## Installation
 
 ```sh
-npm install react-native-squircle-view react-native-svg figma-squircle
+npm install @pankajyadav/react-native-squircle-view react-native-svg figma-squircle
 # or
-yarn add react-native-squircle-view react-native-svg figma-squircle
+yarn add @pankajyadav/react-native-squircle-view react-native-svg figma-squircle
 ```
 
 > **Note:** `react-native-svg` is a required peer dependency. Follow its [installation guide](https://github.com/software-mansion/react-native-svg?tab=readme-ov-file#installation) if you haven't already.
@@ -66,7 +66,7 @@ Follow the [Reanimated installation guide](https://docs.swmansion.com/react-nati
 ## Quick Start
 
 ```tsx
-import { SquircleView } from 'react-native-squircle-view';
+import { SquircleView } from '@pankajyadav/react-native-squircle-view';
 
 export default function App() {
   return (
@@ -89,7 +89,7 @@ export default function App() {
 ### Solid Fill
 
 ```tsx
-import { SquircleView } from 'react-native-squircle-view';
+import { SquircleView } from '@pankajyadav/react-native-squircle-view';
 
 <SquircleView
   squircleParams={{
@@ -238,7 +238,7 @@ Use `<AnimatedSquircleView>` to animate any numeric squircle parameter with a `S
 ### Tap to Morph Corners
 
 ```tsx
-import { AnimatedSquircleView } from 'react-native-squircle-view';
+import { AnimatedSquircleView } from '@pankajyadav/react-native-squircle-view';
 import { useSharedValue, withSpring } from 'react-native-reanimated';
 import { Pressable } from 'react-native';
 
@@ -338,7 +338,7 @@ function StrokeBreath() {
 ```tsx
 import {
   AnimatedSquircleView,
-} from 'react-native-squircle-view';
+} from '@pankajyadav/react-native-squircle-view';
 import {
   useSharedValue,
   useDerivedValue,
@@ -438,7 +438,7 @@ import { FadeInDown, ZoomOut, LinearTransition } from 'react-native-reanimated';
 For advanced use-cases where you need the squircle SVG path inside your own `useAnimatedProps`:
 
 ```tsx
-import { getSvgPathWorklet } from 'react-native-squircle-view';
+import { getSvgPathWorklet } from '@pankajyadav/react-native-squircle-view';
 import { useAnimatedProps, useSharedValue } from 'react-native-reanimated';
 import { Path } from 'react-native-svg';
 import AnimatedPath from 'react-native-svg/src/elements/Path';  // re-export from your app
