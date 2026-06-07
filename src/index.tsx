@@ -3,15 +3,17 @@
  *
  * This file is the single entry-point for library consumers.
  * It intentionally re-exports only what belongs to the public API.
- * Internal implementation details (Rect, SquircleBackground, hooks, etc.)
+ * Internal implementation details (Rect, hooks, etc.)
  * are NOT re-exported so they can be refactored freely without semver bumps.
  */
 
 // ── Static components ─────────────────────────────────────────────────────────
 export { SquircleView } from './components/SquircleView'
+export { SquircleBackground } from './components/SquircleBackground'
 
 // ── Animated components (requires react-native-reanimated peer dep) ───────────
 export { AnimatedSquircleView } from './components/AnimatedSquircleView'
+export { AnimatedSquircleView as AnimatedSquircleBackground } from './components/AnimatedSquircleView'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export type {
