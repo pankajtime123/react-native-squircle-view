@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import type { PropsWithChildren } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { View, Text, ScrollView, Pressable, StyleSheet } from 'react-native'
+import { Text, Pressable, StyleSheet } from 'react-native'
 import {
   useSharedValue,
   withSpring,
@@ -26,7 +26,8 @@ import Animated, {
   LinearTransition,
   Keyframe,
 } from 'react-native-reanimated'
-import { AnimatedSquircleView, SquircleView } from '@pankajtime12/react-native-squircle-view'
+import { SquircleView } from '@pankajtime12/react-native-squircle-view'
+
 
 
 

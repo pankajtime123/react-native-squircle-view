@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
     "paths": {
       "@pankajtime12/react-native-squircle-view": ["./src/index"]
     },
