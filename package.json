@@ -4,8 +4,8 @@
   "description": "Figma-flavored squircles for React Native with gradient support — no native modules",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
-  "types": "lib/typescript/commonjs/index.d.ts",
-  "typings": "lib/typescript/commonjs/index.d.ts",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
   "exports": {
