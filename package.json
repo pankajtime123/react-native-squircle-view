@@ -1,12 +1,11 @@
 {
   "name": "@pankajtime12/react-native-squircle-view",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "Figma-flavored squircles for React Native with gradient support — no native modules",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
-  "types": "index.d.ts",
-  "typings": "index.d.ts",
   "react-native": "src/index.tsx",
+  "types": "./lib/typescript/module/index.d.ts",
   "source": "src/index.tsx",
   "exports": {
     ".": {
