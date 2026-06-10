@@ -45,7 +45,7 @@
   ],
   "scripts": {
     "clean": "del-cli lib",
-    "prepare": "bob build",
+    "prepare": "bob build && node scripts/fix-dts-extensions.js",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\""
   },

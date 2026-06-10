@@ -3,5 +3,5 @@
   "compilerOptions": {
     "rootDir": "src"
   },
-  "exclude": ["example", "lib"]
+  "exclude": ["example", "lib", "scripts"]
 }
