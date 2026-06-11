@@ -97,12 +97,7 @@
     "output": "lib",
     "targets": [
       "commonjs",
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
+      "module",
       [
         "typescript",
         {
