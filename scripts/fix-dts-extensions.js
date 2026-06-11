@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const targetDir = path.join(__dirname, '../lib/typescript/module');
+const targetDir = path.join(__dirname, '../lib/typescript');
 
 function walk(dir) {
   let files = [];
