@@ -36,15 +36,13 @@
  * />
  */
 
-import * as React from 'react'
+
 import { View } from 'react-native'
 import type { PropsWithChildren } from 'react'
 import type { SquircleViewProps } from '../types'
 import { SquircleBackground } from './SquircleBackground'
 
-export const SquircleView: React.FC<
-  PropsWithChildren<SquircleViewProps>
-> = ({ ...props }) => {
+export function SquircleView(props: PropsWithChildren<SquircleViewProps>){
   const { children, squircleParams, ...viewProps } = props
   return (
     <View {...viewProps}>
