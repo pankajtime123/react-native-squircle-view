@@ -42,11 +42,10 @@ import type { PropsWithChildren } from 'react'
 import type { SquircleViewProps } from '../types'
 import { SquircleBackground } from './SquircleBackground'
 
-export function SquircleView({
-  squircleParams,
-  children,
-  ...viewProps
-}: PropsWithChildren<SquircleViewProps>): React.ReactElement {
+export const SquircleView: React.FC<
+  PropsWithChildren<SquircleViewProps>
+> = ({ ...props }) => {
+  const { children, squircleParams, ...viewProps } = props
   return (
     <View {...viewProps}>
       <SquircleBackground {...squircleParams} />
