@@ -16,7 +16,7 @@
         "default": "./lib/module/index.js"
       },
       "require": {
-        "types": "./lib/typescript/commonjs/index.d.cts",
+        "types": "./lib/typescript/commonjs/index.d.ts",
         "default": "./lib/commonjs/index.js"
       },
       "default": "./lib/module/index.js"

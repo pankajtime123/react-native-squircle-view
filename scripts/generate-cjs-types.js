@@ -19,7 +19,7 @@ function walk(dir) {
   return files;
 }
 
-function copyDtsAsDcts(sourceDir, targetDir) {
+function copyDtsForCjs(sourceDir, targetDir) {
   if (!fs.existsSync(sourceDir)) {
     console.error(`Source directory not found: ${sourceDir}`);
     return;
@@ -34,7 +34,7 @@ function copyDtsAsDcts(sourceDir, targetDir) {
   
   files.forEach((file) => {
     const relativePath = path.relative(sourceDir, file);
-    const targetPath = path.join(targetDir, relativePath.replace(/\.d\.ts$/, '.d.cts'));
+    const targetPath = path.join(targetDir, relativePath);
     
     // Create target subdirectories if needed
     const targetSubdir = path.dirname(targetPath);
@@ -45,22 +45,17 @@ function copyDtsAsDcts(sourceDir, targetDir) {
     // Read the .d.ts file
     let content = fs.readFileSync(file, 'utf8');
     
-    // Replace .js extensions with .cjs in import/export statements
-    content = content.replace(
-      /((?:import|export)\s+[\s\S]*?\s+from\s+['"])(\.\.?\/[^'"]+\.js)(['"])/g,
-      (match, p1, p2, p3) => {
-        return `${p1}${p2.replace(/\.js$/, '.cjs')}${p3}`;
-      }
-    );
+    // Keep .js extensions as-is for CommonJS .d.ts files
+    // (They reference the .js files which Node treats as CJS due to no "type": "module")
     
-    // Write as .d.cts
+    // Write as .d.ts (not .d.cts)
     fs.writeFileSync(targetPath, content, 'utf8');
     console.log(`Generated: ${path.relative(path.join(__dirname, '..'), targetPath)}`);
   });
 }
 
-console.log('Generating CommonJS type declarations (.d.cts files)...');
-copyDtsAsDcts(moduleDir, cjsDir);
+console.log('Generating CommonJS type declarations (.d.ts files)...');
+copyDtsForCjs(moduleDir, cjsDir);
 console.log('Done!');
 
 // Made with Bob
