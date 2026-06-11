@@ -6,21 +6,19 @@
   "module": "./lib/module/index.js",
   "types": "./lib/typescript/module/index.d.ts",
   "typings": "./lib/typescript/module/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "lib/typescript/module/*"
-      ]
-    }
-  },
   "react-native": "./lib/module/index.js",
   "source": "src/index.tsx",
   "exports": {
     ".": {
-      "types": "./lib/typescript/module/index.d.ts",
       "react-native": "./lib/module/index.js",
-      "import": "./lib/module/index.js",
-      "require": "./lib/commonjs/index.js",
+      "import": {
+        "types": "./lib/typescript/module/index.d.ts",
+        "default": "./lib/module/index.js"
+      },
+      "require": {
+        "types": "./lib/typescript/commonjs/index.d.cts",
+        "default": "./lib/commonjs/index.js"
+      },
       "default": "./lib/module/index.js"
     },
     "./package.json": "./package.json"
@@ -46,7 +44,7 @@
   ],
   "scripts": {
     "clean": "del-cli lib",
-    "prepare": "bob build && node scripts/fix-dts-extensions.js",
+    "prepare": "bob build && node scripts/fix-dts-extensions.js && node scripts/generate-cjs-types.js",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\""
   },
