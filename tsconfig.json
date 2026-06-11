@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "src",
     "paths": {
       "@pankajtime12/react-native-squircle-view": ["./src/index"]
     },
@@ -25,5 +26,10 @@
     "strict": true,
     "target": "ESNext",
     "verbatimModuleSyntax": true
-  }
+  },
+  "exclude": [
+    "example",
+    "lib",
+    "node_modules"
+  ]
 }
