@@ -7,31 +7,23 @@
  * are NOT re-exported so they can be refactored freely without semver bumps.
  */
 
-import type { ReactElement, PropsWithChildren } from 'react'
-import type { SquircleViewProps, SquircleParams, AnimatedSquircleViewProps } from './types'
+// ── Components ────────────────────────────────────────────────────────────────
+export { SquircleView } from './components/SquircleView'
+export { SquircleBackground } from './components/SquircleBackground'
+export { AnimatedSquircleView } from './components/AnimatedSquircleView'
+export { AnimatedSquircleView as AnimatedSquircleBackground } from './components/AnimatedSquircleView'
 
-import { SquircleView as _SquircleView } from './components/SquircleView'
-export const SquircleView: (props: PropsWithChildren<SquircleViewProps>) => ReactElement = _SquircleView
-export default _SquircleView
-
-import { SquircleBackground as _SquircleBackground } from './components/SquircleBackground'
-export const SquircleBackground: (props: PropsWithChildren<SquircleParams>) => ReactElement = _SquircleBackground
-
-// ── Animated components (requires react-native-reanimated peer dep) ───────────
-import { AnimatedSquircleView as _AnimatedSquircleView } from './components/AnimatedSquircleView'
-export const AnimatedSquircleView: (props: PropsWithChildren<AnimatedSquircleViewProps>) => ReactElement = _AnimatedSquircleView
-export const AnimatedSquircleBackground: (props: PropsWithChildren<AnimatedSquircleViewProps>) => ReactElement = _AnimatedSquircleView
+// ── Default export ────────────────────────────────────────────────────────────
+export { SquircleView as default } from './components/SquircleView'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export type {
-  // Base types
   SquircleParams,
   SquircleViewProps,
   GradientParams,
   LinearGradientParams,
   RadialGradientParams,
   GradientStop,
-  // Animated types
   MaybeAnimated,
   AnimatedSquircleParams,
   AnimatedSquircleViewProps,
