@@ -5,7 +5,14 @@
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "types": "./lib/typescript/module/index.d.ts",
-  "typings": "./lib/typescript/module/index.d.ts",
+"typings": "./lib/typescript/module/index.d.ts",
+"typesVersions": {
+  "*": {
+    "*": [
+      "lib/typescript/module/*"
+    ]
+  }
+},
   "react-native": "./lib/module/index.js",
   "source": "src/index.tsx",
   "exports": {
