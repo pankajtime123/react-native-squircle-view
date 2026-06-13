@@ -107,7 +107,7 @@ export function SquircleBackground({
             <Path
               d={insetPath}
               fill={pathFill}
-              stroke={strokeColor}
+              stroke={String(strokeColor)}
               strokeWidth={clampedStroke}
               translate={inset}
             />
